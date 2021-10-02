@@ -88,3 +88,5 @@ require (
 	storj.io/common v0.0.0-20210419115916-eabb53ea1332 // indirect
 	storj.io/uplink v1.4.6
 )
+
+replace github.com/K265/aliyundrive-go => github.com/jim3ma/aliyundrive-go v0.0.0-20210928132624-c1aecf932917

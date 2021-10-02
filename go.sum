@@ -63,8 +63,6 @@ github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/Julusian/godocdown v0.0.0-20170816220326-6d19f8ff2df8/go.mod h1:INZr5t32rG59/5xeltqoCJoNY7e5x/3xoY9WSWVWg74=
-github.com/K265/aliyundrive-go v0.0.0-20210809081844-5976ef862fc3 h1:Dspg7ImNqBQF8Lsen+ya4WUVHOtUrMkXLJBo7FVVnQI=
-github.com/K265/aliyundrive-go v0.0.0-20210809081844-5976ef862fc3/go.mod h1:gSEZmEJhd+Qf03U/HVdAD+DfKmNMxxkPL6LQqzEojMM=
 github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible/go.mod h1:r7JcOSlj0wfOMncg0iLm8Leh48TZaKVeNIfJntJ2wa0=
 github.com/Microsoft/go-winio v0.4.14/go.mod h1:qXqCSQ3Xa7+6tgxaGTIe4Kpcdsi+P8jBhyzoq1bpyYA=
 github.com/Microsoft/go-winio v0.4.17 h1:iT12IBVClFevaf8PuVyi3UmZOVh4OqnaLxDTW2O6j3w=
@@ -384,6 +382,10 @@ github.com/jcmturner/rpc/v2 v2.0.2/go.mod h1:VUJYCIDm3PVOEHw8sgt091/20OJjskO/YJk
 github.com/jcmturner/rpc/v2 v2.0.3 h1:7FXXj8Ti1IaVFpSAziCZWNzbNuZmnvw/i6CqLNdWfZY=
 github.com/jcmturner/rpc/v2 v2.0.3/go.mod h1:VUJYCIDm3PVOEHw8sgt091/20OJjskO/YJki3ELg/Hc=
 github.com/jessevdk/go-flags v0.0.0-20141203071132-1679536dcc89/go.mod h1:4FA24M0QyGHXBuZZK/XkWh8h0e1EYbRYJSGM75WSRxI=
+github.com/jim3ma/aliyundrive-go v0.0.0-20210824144711-72c017c2a925 h1:aGnf9fZ2Zm1S9KWsvwp7zozFr9G+s6GSnRJUdqYvEUg=
+github.com/jim3ma/aliyundrive-go v0.0.0-20210824144711-72c017c2a925/go.mod h1:gSEZmEJhd+Qf03U/HVdAD+DfKmNMxxkPL6LQqzEojMM=
+github.com/jim3ma/aliyundrive-go v0.0.0-20210928132624-c1aecf932917 h1:iKQXqSnNcEyeGsRJIyeo7tchJkWi1S9MOsIsZhZe1As=
+github.com/jim3ma/aliyundrive-go v0.0.0-20210928132624-c1aecf932917/go.mod h1:gSEZmEJhd+Qf03U/HVdAD+DfKmNMxxkPL6LQqzEojMM=
 github.com/jlaffaye/ftp v0.0.0-20190624084859-c1312a7102bf/go.mod h1:lli8NYPQOFy3O++YmYbqVgOcQ1JPCwdOy+5zSjKJ9qY=
 github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067 h1:P2S26PMwXl8+ZGuOG3C69LG4be5vHafUayZm9VPw3tU=
 github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067/go.mod h1:2lmrmq866uF2tnje75wQHzmPXhmSWUt7Gyx2vgK1RCU=
