@@ -44,7 +44,7 @@ func Object(w http.ResponseWriter, r *http.Request, o fs.Object) {
 	size := o.Size()
 	var options []fs.OpenOption
 	if rangeRequest := r.Header.Get("Range"); rangeRequest != "" {
-		//fs.Debugf(nil, "Range: request %q", rangeRequest)
+		fs.Debugf(nil, "Range: request %q", rangeRequest)
 		option, err := fs.ParseRangeOption(rangeRequest)
 		if err != nil {
 			fs.Debugf(o, "Get request parse range request error: %v", err)
@@ -61,10 +61,10 @@ func Object(w http.ResponseWriter, r *http.Request, o fs.Object) {
 			end = o.Size()
 		}
 		size = end - offset
-		// fs.Debugf(nil, "Range: offset=%d, limit=%d, end=%d, size=%d (object size %d)", offset, limit, end, size, o.Size())
+		fs.Debugf(nil, "Range: offset=%d, limit=%d, end=%d, size=%d (object size %d)", offset, limit, end, size, o.Size())
 		// Content-Range: bytes 0-1023/146515
 		w.Header().Set("Content-Range", fmt.Sprintf("bytes %d-%d/%d", offset, end-1, o.Size()))
-		// fs.Debugf(nil, "Range: Content-Range: %q", w.Header().Get("Content-Range"))
+		fs.Debugf(nil, "Range: Content-Range: %q", w.Header().Get("Content-Range"))
 		code = http.StatusPartialContent
 	}
 	w.Header().Set("Content-Length", strconv.FormatInt(size, 10))

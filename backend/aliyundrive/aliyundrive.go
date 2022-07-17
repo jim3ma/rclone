@@ -288,7 +288,10 @@ func (f *Fs) listAll(ctx context.Context, nodeId string) ([]drive.Node, error) {
 	var nodes []drive.Node
 	for p.Next() {
 		err := f.pacer.Call(func() (bool, error) {
-			data, err := p.Nodes(ctx)
+			listCtx, cancel := context.WithTimeout(ctx, time.Minute)
+			defer cancel()
+
+			data, err := p.Nodes(listCtx)
 			if err == nil {
 				nodes = append(nodes, data...)
 			}
