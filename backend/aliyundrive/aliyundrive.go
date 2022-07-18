@@ -443,6 +443,33 @@ func (f *Fs) resetNodeCacheByRemoteDirId(remotes ...string) {
 	}
 }
 
+func (f *Fs) removeNodeCacheByRemote(remotes ...string) {
+	f.Lock()
+	defer f.Unlock()
+	for _, remote := range remotes {
+		name, directoryId, err := f.dirCache.FindPath(context.Background(), remote, false)
+		if err != nil {
+			fs.Errorf(f, "find path for %s error: %s", remote, err)
+			return
+		}
+		fs.Debugf(f, "remove node cache by remote %s, update directory: %s", remote, directoryId)
+		if len(f.nodeCache[directoryId]) > 0 {
+			idx := -1
+			nodes := f.nodeCache[directoryId]
+			for i := range nodes {
+				if nodes[i].Name == name {
+					idx = i
+					break
+				}
+			}
+			if idx > -1 {
+				updated := append(nodes[:idx], nodes[idx+1:]...)
+				f.nodeCache[directoryId] = updated
+			}
+		}
+	}
+}
+
 // Copy src to this remote using server-side copy operations.
 //
 // This is stored with the remote path given
@@ -727,7 +754,7 @@ func (o *Object) Update(ctx context.Context, in io.Reader, src fs.ObjectInfo, op
 // Remove an object
 func (o *Object) Remove(ctx context.Context) (err error) {
 	err = o.fs.pacer.Call(func() (bool, error) {
-		o.fs.resetNodeCacheByRemoteDirId(o.remote)
+		o.fs.removeNodeCacheByRemote(o.remote)
 		err = o.fs.srv.Remove(ctx, o.node.NodeId)
 		return o.fs.shouldRetry(ctx, err)
 	})
