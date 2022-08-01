@@ -430,8 +430,6 @@ func (f *Fs) resetNodeCacheByDirId(directoryIds ...string) {
 }
 
 func (f *Fs) resetNodeCacheByRemoteDirId(remotes ...string) {
-	f.Lock()
-	defer f.Unlock()
 	for _, remote := range remotes {
 		_, directoryId, err := f.dirCache.FindPath(context.Background(), remote, false)
 		if err != nil {
@@ -439,13 +437,13 @@ func (f *Fs) resetNodeCacheByRemoteDirId(remotes ...string) {
 			return
 		}
 		fs.Debugf(f, "reset node cache by remote %s's parent dir %s", remote, directoryId)
+		f.Lock()
 		delete(f.nodeCache, directoryId)
+		f.Unlock()
 	}
 }
 
 func (f *Fs) removeNodeCacheByRemote(remotes ...string) {
-	f.Lock()
-	defer f.Unlock()
 	for _, remote := range remotes {
 		name, directoryId, err := f.dirCache.FindPath(context.Background(), remote, false)
 		if err != nil {
@@ -453,6 +451,7 @@ func (f *Fs) removeNodeCacheByRemote(remotes ...string) {
 			return
 		}
 		fs.Debugf(f, "remove node cache by remote %s, update directory: %s", remote, directoryId)
+		f.Lock()
 		if len(f.nodeCache[directoryId]) > 0 {
 			idx := -1
 			nodes := f.nodeCache[directoryId]
@@ -467,6 +466,7 @@ func (f *Fs) removeNodeCacheByRemote(remotes ...string) {
 				f.nodeCache[directoryId] = updated
 			}
 		}
+		f.Unlock()
 	}
 }
 
